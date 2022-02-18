@@ -39,7 +39,7 @@ public class Pruebas2String {
         String cadena1, cadena2;
 
         cadena1 = JOptionPane.showInputDialog("Introduzca primera cadena:");
-        cadena2 = JOptionPane.showInputDialog("Introduzca segunda cadena:");
+        cadena2 = JOptionPane.showInputDialog("Introduzca cadena a reemplazar:");
         JOptionPane.showMessageDialog(null, "Resultado: " + pasaMayusculas(cadena1, cadena2));
     }
 

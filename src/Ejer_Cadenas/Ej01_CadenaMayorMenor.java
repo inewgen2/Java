@@ -24,6 +24,7 @@ import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Ej01_CadenaMayorMenor {
 
@@ -353,6 +354,39 @@ public class Ej01_CadenaMayorMenor {
         limpiarAnt();
     }
 
+    public static void cadenaEspejo() {
+        Scanner in = new Scanner(System.in);
+        int i;
+        String nueva = "", original;
+        System.out.print("Introducir la cadena original: ");
+        original = in.nextLine();
+        for (i = original.length() - 1; i >= 0; i--) {
+            nueva = nueva + original.charAt(i);
+        }
+        System.out.println("La frase espejo es: "+nueva);
+        limpiarAnt();
+
+    }
+
+    public static void subCadena_A_Mayusculas() {
+        Scanner in = new Scanner(System.in);
+        String cad1;
+        String cad2, subCadena;
+        int posicion;
+        System.out.print("Introducir la cadena original: ");
+        cad1 = in.nextLine();
+        System.out.print("Introducir la cadena a buscar: ");
+        cad2 = in.nextLine();
+        posicion = cad1.indexOf(cad2);
+        if (posicion != -1) {
+            subCadena = cad1.substring(posicion, posicion + cad2.length());
+            System.out.println(cad1.substring(0, posicion) + subCadena.toUpperCase() + cad1.substring(posicion + cad2.length()));
+        } else {
+            System.out.println(cad1);
+        }
+        limpiarAnt();
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));//carga buffer para teclado
         int opcion;
@@ -369,7 +403,9 @@ public class Ej01_CadenaMayorMenor {
             System.out.println("8. Frecuencia de vocales que estan en un oracion");
             System.out.println("9. Cuenta el numero de palabras con 4 vocales diferentes");
             System.out.println("10. Codifica mensaje");
-            System.out.println("11. Salir del programa");
+            System.out.println("11. Reemplaza una subcadena a mayusculas");
+            System.out.println("12. Cadena en forma de espejo");
+            System.out.println("21. Salir del programa");
             System.out.print("\nIngrese la opcion:  ");
             opcion = Integer.parseInt(br.readLine());
             switch (opcion) {
@@ -403,11 +439,17 @@ public class Ej01_CadenaMayorMenor {
                 case 10:
                     codificaMensaje();
                     break;
+                case 11:
+                    subCadena_A_Mayusculas();
+                    break;
+                case 12:
+                    cadenaEspejo();
+                    break;
                 default:
                     System.out.println("La opcion no existe intente nuevamente...");
                     limpiarAnt();
                     break;
             }
-        } while (opcion != 11);//sale al presionar 11 logica inversa
+        } while (opcion != 21);//sale al presionar 11 logica inversa
     }
 }
